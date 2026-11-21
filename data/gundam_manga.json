@@ -17,8 +17,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+Char%27s+Counterattack+%E2%80%94+Beltorchika%27s+Children%2C+Vol.+1+manga",
-        "status": "available",
-        "reason": "results-found",
+        "status": "unknown",
+        "reason": "bot-challenge",
         "label": "Amazon"
       },
       {
@@ -36,7 +36,7 @@
         "label": "Denpa"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "notes": [
       "Print/digital ISBN ambiguity in research: print ISBN 9781634428095 (14 Nov 2023); Denpa's own page lists digital ISBN 9781634427999."
     ],
@@ -81,7 +81,7 @@
         "label": "Denpa"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781634428101",
     "availability": "available",
     "unavailableStreak": 0
@@ -123,7 +123,7 @@
         "label": "Denpa"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "datePrecision": "month",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781634428651",
     "availability": "available",
@@ -159,7 +159,7 @@
         "label": "Indigo"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "notes": [
       "Release date slipped repeatedly in solicitations before settling on 24 Nov 2026 (US)."
     ],
@@ -204,7 +204,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647293901",
     "availability": "available",
     "unavailableStreak": 0
@@ -246,7 +246,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647293918",
     "availability": "available",
     "unavailableStreak": 0
@@ -288,7 +288,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647293925",
     "availability": "available",
     "unavailableStreak": 0
@@ -311,8 +311,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+The+Origin+MSD+%E2%80%94+Cucuruz+Doan%27s+Island%2C+Vol.+4+manga",
-        "status": "available",
-        "reason": "results-found",
+        "status": "unknown",
+        "reason": "bot-challenge",
         "label": "Amazon"
       },
       {
@@ -330,7 +330,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647293932",
     "availability": "available",
     "unavailableStreak": 0
@@ -372,7 +372,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647293949",
     "availability": "available",
     "unavailableStreak": 0
@@ -415,7 +415,7 @@
         "label": "Denpa"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781634429740",
     "availability": "available",
     "unavailableStreak": 0
@@ -457,7 +457,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Activation",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781935654872",
     "availability": "available",
@@ -500,7 +500,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Garma",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781935654889",
     "availability": "available",
@@ -543,7 +543,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Ramba Ral",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781935654971",
     "availability": "available",
@@ -586,7 +586,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Jaburo",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781935654988",
     "availability": "available",
@@ -610,8 +610,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN%2C+Vol.+5%3A+Char+%26+Sayla+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -629,7 +629,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Char & Sayla",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781939130198",
     "availability": "available",
@@ -653,8 +653,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN%2C+Vol.+6%3A+To+War+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -672,7 +672,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "To War",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781939130204",
     "availability": "available",
@@ -715,7 +715,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Battle of Loum",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781939130679",
     "availability": "available",
@@ -739,8 +739,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN%2C+Vol.+8%3A+Operation+Odessa+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -758,7 +758,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Operation Odessa",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781939130686",
     "availability": "available",
@@ -782,8 +782,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN%2C+Vol.+9%3A+Lalah+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -801,7 +801,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Lalah",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781941220153",
     "availability": "available",
@@ -825,8 +825,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN%2C+Vol.+10%3A+Solomon+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -844,7 +844,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Solomon",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781941220160",
     "availability": "available",
@@ -868,8 +868,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN%2C+Vol.+11%3A+A+Cosmic+Glow+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -887,7 +887,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "A Cosmic Glow",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781941220467",
     "availability": "available",
@@ -911,8 +911,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN%2C+Vol.+12%3A+Encounters+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -930,7 +930,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "subtitle": "Encounters",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781941220474",
     "availability": "available",
@@ -954,8 +954,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN+Deluxe%2C+Vol.+1+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -973,7 +973,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "pageCount": 880,
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647294854",
     "availability": "available",
@@ -997,8 +997,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN+Deluxe%2C+Vol.+2+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -1016,7 +1016,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "pageCount": 976,
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647294861",
     "availability": "available",
@@ -1040,8 +1040,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN+Deluxe%2C+Vol.+3+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -1059,7 +1059,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647294878",
     "availability": "available",
     "unavailableStreak": 0
@@ -1101,7 +1101,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "pageCount": 904,
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647295523",
     "availability": "available",
@@ -1144,7 +1144,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "pageCount": 856,
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647295530",
     "availability": "available",
@@ -1168,8 +1168,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam%3A+THE+ORIGIN+Deluxe%2C+Vol.+6+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -1187,7 +1187,7 @@
         "label": "Penguin"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "pageCount": 784,
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781647295547",
     "availability": "available",
@@ -1211,8 +1211,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam+Thunderbolt%2C+Vol.+1+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -1230,7 +1230,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421590554",
     "availability": "available",
     "unavailableStreak": 0
@@ -1272,7 +1272,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421592602",
     "availability": "available",
     "unavailableStreak": 0
@@ -1314,7 +1314,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421592619",
     "availability": "available",
     "unavailableStreak": 0
@@ -1356,7 +1356,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421593029",
     "availability": "available",
     "unavailableStreak": 0
@@ -1398,7 +1398,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421593036",
     "availability": "available",
     "unavailableStreak": 0
@@ -1440,7 +1440,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421593043",
     "availability": "available",
     "unavailableStreak": 0
@@ -1482,7 +1482,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421595054",
     "availability": "available",
     "unavailableStreak": 0
@@ -1505,8 +1505,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam+Thunderbolt%2C+Vol.+8+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -1524,7 +1524,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421595061",
     "availability": "available",
     "unavailableStreak": 0
@@ -1566,7 +1566,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781421599151",
     "availability": "available",
     "unavailableStreak": 0
@@ -1589,8 +1589,8 @@
       {
         "store": "amazon",
         "url": "https://www.amazon.com/s?k=Mobile+Suit+Gundam+Thunderbolt%2C+Vol.+10+manga",
-        "status": "unknown",
-        "reason": "bot-challenge",
+        "status": "available",
+        "reason": "results-found",
         "label": "Amazon"
       },
       {
@@ -1608,7 +1608,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974701070",
     "availability": "available",
     "unavailableStreak": 0
@@ -1650,7 +1650,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974706464",
     "availability": "available",
     "unavailableStreak": 0
@@ -1692,7 +1692,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974707461",
     "availability": "available",
     "unavailableStreak": 0
@@ -1734,7 +1734,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974711987",
     "availability": "available",
     "unavailableStreak": 0
@@ -1776,7 +1776,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974715329",
     "availability": "available",
     "unavailableStreak": 0
@@ -1818,7 +1818,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974720729",
     "availability": "available",
     "unavailableStreak": 0
@@ -1860,7 +1860,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974722952",
     "availability": "available",
     "unavailableStreak": 0
@@ -1902,7 +1902,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974726530",
     "availability": "available",
     "unavailableStreak": 0
@@ -1944,7 +1944,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974732487",
     "availability": "available",
     "unavailableStreak": 0
@@ -1981,12 +1981,12 @@
       {
         "store": "viz",
         "url": "https://www.viz.com/manga-books/manga/mobile-suit-gundam-thunderbolt-volume-19-0/product/7381",
-        "status": "available",
-        "reason": "page-verified",
+        "status": "unknown",
+        "reason": "unverifiable",
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974736164",
     "availability": "available",
     "unavailableStreak": 0
@@ -2028,7 +2028,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974740444",
     "availability": "available",
     "unavailableStreak": 0
@@ -2065,12 +2065,12 @@
       {
         "store": "viz",
         "url": "https://www.viz.com/manga-books/manga/mobile-suit-gundam-thunderbolt-volume-21-0/product/7777",
-        "status": "unknown",
-        "reason": "unverifiable",
+        "status": "available",
+        "reason": "page-verified",
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974743735",
     "availability": "available",
     "unavailableStreak": 0
@@ -2112,7 +2112,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974749324",
     "availability": "available",
     "unavailableStreak": 0
@@ -2154,7 +2154,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974754960",
     "availability": "available",
     "unavailableStreak": 0
@@ -2196,7 +2196,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974752928",
     "availability": "available",
     "unavailableStreak": 0
@@ -2238,7 +2238,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974760961",
     "availability": "available",
     "unavailableStreak": 0
@@ -2280,7 +2280,7 @@
         "label": "VIZ"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "coverUrl": "https://images2.penguinrandomhouse.com/cover/9781974766475",
     "availability": "available",
     "unavailableStreak": 0
@@ -2315,7 +2315,7 @@
         "label": "Indigo"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "notes": [
       "Final volume of the series."
     ],
@@ -2384,7 +2384,7 @@
         "kind": "digital"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "pageCount": 192,
     "notes": [
       "Release date conflict in research: Yen Press lists 25 Aug 2026; Anime News Network listed 14 Jul 2026. Yen's date is used."
@@ -2454,7 +2454,7 @@
         "kind": "digital"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "pageCount": 208,
     "notes": [
       "Release date conflict in research: Yen Press lists 22 Sep 2026; a Hachette order form lists 24 Nov 2026. Yen's date is used."
@@ -2513,12 +2513,12 @@
         "store": "kindle",
         "label": "Kindle",
         "url": "https://www.amazon.com/Mobile-Gundam-Witch-Mercury-Vanadis-Heart-ebook/dp/B0HG8WR79B",
-        "status": "unknown",
-        "reason": "unverifiable",
+        "status": "available",
+        "reason": "page-verified",
         "kind": "digital"
       }
     ],
-    "linksCheckedAt": "2026-11-20T15:16:28.543302Z",
+    "linksCheckedAt": "2026-11-21T14:32:26.822650Z",
     "availability": "available",
     "unavailableStreak": 0
   }

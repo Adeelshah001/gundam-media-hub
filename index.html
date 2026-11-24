@@ -496,9 +496,13 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-orange-600 selection:text-white">
 
-  <!-- TOP UTILITY BAR (no brand header: the logo lives centered above "Every Gundam story." on the landing view) -->
+  <!-- TOP UTILITY BAR (no brand header: the big logo lives centered above "Every Gundam story." on the landing view; a small home logo appears top-left on catalog pages) -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0d0f14]/90 backdrop-blur-md px-4 lg:px-8 py-3">
-    <div class="max-w-7xl mx-auto flex items-center justify-end gap-2">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <a id="homeLogoLink" href="#/" title="Home" class="hidden shrink-0">
+        <img src="gmh-logo.png" alt="Gundam Media Hub — home" class="h-9 w-auto rounded-lg">
+      </a>
+      <div class="flex items-center gap-2 ml-auto">
 
       <a id="dcLink" href="https://dc-compact-live-dashboard.vercel.app" target="_blank" rel="noopener noreferrer" title="Sister site: DC Compact Comics dashboard" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">DC Compact Comics ↗</a>
       <button id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Switch theme" class="theme-toggle w-9 h-9 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
@@ -512,6 +516,7 @@
         <option value="fr">Français</option>
       </select>
 
+      </div>
     </div>
   </header>
 
@@ -1591,6 +1596,9 @@ One hub.</h2>
       const name = CATALOGS[hash] ? hash : null;
       document.getElementById('view-landing').classList.toggle('hidden', !!name);
       document.getElementById('view-browser').classList.toggle('hidden', !name);
+      // Small home logo, top-left in the header, only on catalog pages.
+      const homeLogo = document.getElementById('homeLogoLink');
+      if (homeLogo) homeLogo.classList.toggle('hidden', !name);
       if (name) {
         currentCatalog = name;
         currentStatus = 'all';

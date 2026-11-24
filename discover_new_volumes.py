@@ -20,7 +20,9 @@ publisher pages:
   3. Upcoming refresh. Re-reads live PRH pages for Upcoming entries with
      canonical PRH URLs and updates date/status/page-count from
      PRH-verified values, so slips and releases are caught the day PRH
-     reflects them.
+     reflects them. Entries with no PRH page (VIZ/Yen/Denpa titles, which
+     PRH never lists) fall back to their Indigo product page instead,
+     report-only: date/ISBN mismatches are logged, never written.
 
 Runs in the daily GitHub Action BEFORE check_buy_links.py, so attached
 PRH URLs get link verification the same day. Stdlib only; no pip installs.
@@ -60,7 +62,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
-from datetime import date
+from datetime import date, datetime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE_DIR, "data", "gundam_manga.json")
@@ -78,7 +80,10 @@ USER_AGENT = {
 # secondary. Add an entry here (with its source in the comment) when a
 # publisher page and PRH disagree. Empty: no such conflict is known.
 PINNED = {
-    # "entry-id": {"releaseDate": "YYYY-MM-DD", "pageCount": 123},
+    # Beltorchika Vol. 4: retailer convergence says January 2027 (UK
+    # wholesaler Jan 7 + preorder form); Indigo Canada lists the outlier
+    # Jul 2, 2027. Never let a re-read overwrite January 2027.
+    "beltorchikas-children-vol-4": {"releaseDate": "2027-01"},
 }
 
 # Series-page watch: (seriesId, page URL, volume-number pattern).
@@ -330,6 +335,24 @@ def parse_book_page(body, url):
     }
 
 
+def parse_indigo_page(body):
+    """Extract Published date + ISBN from an Indigo product page. Returns
+    {"date": "YYYY-MM-DD", "isbn": "..."} or None when either field cannot
+    be parsed (caller skips the entry). Patterns verified live against
+    Indigo pages, 2026-11-23."""
+    date_m = re.search(
+        r"Published date:\s*<span[^>]*>([A-Z][a-z]{2} \d{1,2}, \d{4})</span>", body
+    )
+    isbn_m = re.search(r"ISBN:\s*<span[^>]*>(97[89]\d{10})</span>", body)
+    if not date_m or not isbn_m:
+        return None
+    try:
+        pub_date = datetime.strptime(date_m.group(1), "%b %d, %Y").date().isoformat()
+    except ValueError:
+        return None
+    return {"date": pub_date, "isbn": isbn_m.group(1)}
+
+
 def status_from(availability, pub_date, today):
     if availability == "preorder":
         return "Upcoming"
@@ -403,14 +426,17 @@ def refresh_upcoming(catalog, known, delay, dry_run):
         if item.get("status") != "Upcoming":
             continue
         prh_id = by_prh.get(item["id"])
-        if not prh_id:
-            continue
         url = ""
-        for entry in item.get("links") or []:
-            if entry.get("store") == "prh":
-                url = entry.get("url") or ""
-                break
+        if prh_id:
+            for entry in item.get("links") or []:
+                if entry.get("store") == "prh":
+                    url = entry.get("url") or ""
+                    break
         if not url:
+            # No PRH page: fall back to the Indigo product page,
+            # report-only (never writes). PRH never lists VIZ/Yen/Denpa
+            # titles, so without this these entries are never re-read.
+            changes.extend(refresh_indigo(item, delay))
             continue
         time.sleep(delay)
         try:
@@ -457,6 +483,53 @@ def refresh_upcoming(catalog, known, delay, dry_run):
             changes.append(f"UPDATE {item['id']}: {desc}")
             if not dry_run:
                 item.update(updates)
+    return changes
+
+
+def refresh_indigo(item, delay):
+    """Re-read the Indigo product page for an Upcoming entry with no PRH
+    page. Report-only: date/ISBN mismatches are logged, never written.
+    A pinned date suppresses the known-outlier diff. Returns a list of
+    change descriptions."""
+    url = ""
+    for entry in item.get("links") or []:
+        if entry.get("store") == "indigo":
+            url = entry.get("url") or ""
+            break
+    if not url:
+        return []
+    time.sleep(delay)
+    try:
+        status, body = fetch(url)
+    except RateLimited:
+        raise
+    except AbortDiscovery as e:
+        print(f"  refresh {item['id']}: {e}; skipping")
+        return []
+    if status != 200:
+        print(f"  refresh {item['id']}: HTTP {status}; skipping")
+        return []
+    meta = parse_indigo_page(body)
+    if not meta:
+        print(f"  refresh {item['id']}: unparseable Indigo page; skipping")
+        return []
+    changes = []
+    if meta["isbn"] != item.get("isbn"):
+        changes.append(
+            f"ISBN-DIFF {item['id']}: catalog {item.get('isbn')} vs Indigo "
+            f"{meta['isbn']} (report-only; correction pass pending)"
+        )
+    cat_date = str(item.get("releaseDate") or "")
+    # Compare at the catalog's precision: a month-precision date matches
+    # any day in the same month.
+    same = meta["date"][:7] == cat_date if len(cat_date) == 7 else meta["date"] == cat_date
+    if not same:
+        pinned = PINNED.get(item["id"], {}).get("releaseDate")
+        if pinned is None or cat_date != pinned:
+            changes.append(
+                f"INDIGO-DIFF {item['id']}: catalog {cat_date} vs Indigo "
+                f"{meta['date']} (report-only; correction pass pending)"
+            )
     return changes
 
 

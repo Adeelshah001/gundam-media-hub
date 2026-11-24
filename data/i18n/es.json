@@ -111,7 +111,9 @@
     "status.buttonPattern": "{label} ({n})",
     "status.released": "Lanzado",
     "status.upcoming": "Próximo",
-    "label.discReleaseDate": "Fecha de lanzamiento del disco"
+    "label.discReleaseDate": "Fecha de lanzamiento del disco",
+    "theme.switchToDark": "Cambiar a modo oscuro",
+    "theme.switchToLight": "Cambiar a modo claro"
   },
   "entries": {
     "beltorchikas-children-vol-1": {

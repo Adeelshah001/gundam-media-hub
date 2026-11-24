@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,8 @@
       --bg-space: #0d0f14;
       --card-bg: rgba(23, 27, 36, 0.85);
       --card-border: rgba(255, 255, 255, 0.08);
-      --card-border-hover: rgba(239, 68, 68, 0.5);
-      --accent-red: #ef4444;
+      --card-border-hover: rgba(249, 115, 22, 0.5);
+      --accent-red: #f97316;
       --accent-amber: #f59e0b;
     }
     body {
@@ -31,9 +31,9 @@
       border-color: var(--card-border-hover);
     }
     .badge-pub {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(245, 158, 11, 0.2));
-      border: 1px solid rgba(248, 113, 113, 0.35);
-      color: #fca5a5;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2));
+      border: 1px solid rgba(251, 146, 60, 0.35);
+      color: #fdba74;
     }
     .badge-compact {
       background: rgba(16, 185, 129, 0.15);
@@ -253,7 +253,7 @@
     .item-card:hover,
     .item-card:focus-visible {
       transform: scale(1.05);
-      box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.55), 0 16px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.55), 0 16px 32px rgba(0, 0, 0, 0.5);
       z-index: 10;
     }
 
@@ -374,40 +374,143 @@
       color: #f59e0b;
       font-weight: 600;
     }
+
+    /* ==================================================================
+       Themes: dark is Banshee (near-black + orange accents); light is
+       RX-78-2 (white + blue/red/yellow). data-theme on <html> switches;
+       the toggle in the header persists the choice in localStorage.
+       The base rules above are the dark theme; the overrides below
+       re-skin the same markup for light. Store brand colors are
+       untouched — only the pale text tints are darkened for contrast.
+       ================================================================== */
+    [data-theme="light"] body {
+      background-color: #f2f2ee;
+      background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+      color: #1e293b;
+    }
+    [data-theme="light"] header {
+      background-color: rgba(255, 255, 255, 0.92);
+      border-color: rgba(15, 23, 42, 0.1);
+    }
+    [data-theme="light"] .space-glass {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(15, 23, 42, 0.1);
+    }
+    [data-theme="light"] .space-glass:hover { border-color: rgba(29, 78, 216, 0.5); }
+    [data-theme="light"] .badge-pub {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(245, 158, 11, 0.12));
+      border-color: rgba(234, 88, 12, 0.35);
+      color: #c2410c;
+    }
+    [data-theme="light"] .badge-compact {
+      background: rgba(4, 120, 87, 0.1);
+      border-color: rgba(4, 120, 87, 0.3);
+      color: #047857;
+    }
+    [data-theme="light"] .badge-upcoming {
+      background: rgba(180, 83, 9, 0.1);
+      border-color: rgba(180, 83, 9, 0.3);
+      color: #92400e;
+    }
+    [data-theme="light"] .hub-card {
+      background: #ffffff;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(15, 23, 42, 0.08);
+    }
+    [data-theme="light"] .hub-strip-detail { color: #475569; }
+    [data-theme="light"] .hub-strip-count { color: #0f172a; }
+    [data-theme="light"] .hub-strip-bg::after { background: rgba(255, 255, 255, 0.6); }
+    [data-theme="light"] .item-card {
+      background-color: #ffffff;
+      border-color: rgba(15, 23, 42, 0.1);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+    }
+    [data-theme="light"] .item-card:hover,
+    [data-theme="light"] .item-card:focus-visible {
+      box-shadow: 0 0 0 1px rgba(29, 78, 216, 0.55), 0 16px 32px rgba(15, 23, 42, 0.2);
+    }
+    [data-theme="light"] .item-card__placeholder {
+      background: linear-gradient(160deg, #f8fafc 0%, #e2e8f0 55%, #fef3c7 100%);
+    }
+    [data-theme="light"] .item-card__placeholder-title { color: #0f172a; }
+    [data-theme="light"] .item-card__content { background-color: rgba(255, 255, 255, 0.95); }
+    [data-theme="light"] .item-card__title { color: #0f172a; }
+    [data-theme="light"] .item-card__description { color: #475569; }
+    [data-theme="light"] .item-card__hint { color: #b45309; }
+    [data-theme="light"] ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.06); }
+    [data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.2); }
+    [data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.35); }
+    /* Light text/surface utilities (dark text on light surfaces). */
+    [data-theme="light"] .text-white { color: #0f172a; }
+    [data-theme="light"] .hover\:text-white:hover { color: #0f172a; }
+    [data-theme="light"] .text-slate-200 { color: #334155; }
+    [data-theme="light"] .text-slate-300 { color: #475569; }
+    [data-theme="light"] .text-slate-400 { color: #64748b; }
+    [data-theme="light"] .text-slate-500 { color: #64748b; }
+    [data-theme="light"] .bg-slate-800\/80 { background-color: rgba(255, 255, 255, 0.92); }
+    [data-theme="light"] .bg-slate-900\/40 { background-color: rgba(255, 255, 255, 0.65); }
+    [data-theme="light"] .bg-slate-900\/90 { background-color: rgba(255, 255, 255, 0.95); }
+    [data-theme="light"] .bg-slate-900 { background-color: #f1f5f9; }
+    [data-theme="light"] .border-white\/10 { border-color: rgba(15, 23, 42, 0.12); }
+    [data-theme="light"] .border-white\/5 { border-color: rgba(15, 23, 42, 0.07); }
+    [data-theme="light"] .border-white\/20 { border-color: rgba(15, 23, 42, 0.2); }
+    [data-theme="light"] .placeholder-slate-400::placeholder { color: #94a3b8; }
+    /* Primary actions go RX-78-2 blue in light mode (orange in dark). */
+    [data-theme="light"] .bg-orange-600 { background-color: #1d4ed8; }
+    [data-theme="light"] .bg-orange-600.text-white { color: #ffffff; }
+    [data-theme="light"] .hover\:bg-orange-500:hover { background-color: #2563eb; }
+    [data-theme="light"] .focus\:border-orange-500:focus { border-color: #2563eb; }
+    [data-theme="light"] #sortSelect { border-color: rgba(29, 78, 216, 0.4); color: #1d4ed8; }
+    /* Store/brand text colors: pale tints are unreadable on white. */
+    [data-theme="light"] .text-red-100 { color: #991b1b; }
+    [data-theme="light"] .text-red-200, [data-theme="light"] .text-red-300 { color: #b91c1c; }
+    [data-theme="light"] .text-red-400 { color: #dc2626; }
+    [data-theme="light"] .text-amber-100 { color: #78350f; }
+    [data-theme="light"] .text-amber-100\/80 { color: rgba(120, 53, 15, 0.85); }
+    [data-theme="light"] .text-amber-200, [data-theme="light"] .text-amber-300 { color: #92400e; }
+    [data-theme="light"] .text-amber-400 { color: #b45309; }
+    [data-theme="light"] .text-orange-200, [data-theme="light"] .text-orange-300 { color: #c2410c; }
+    [data-theme="light"] .text-orange-400 { color: #ea580c; }
+    [data-theme="light"] .text-indigo-200, [data-theme="light"] .text-indigo-300 { color: #4338ca; }
+    [data-theme="light"] .text-rose-300 { color: #be123c; }
+    [data-theme="light"] .text-teal-300 { color: #0f766e; }
+    [data-theme="light"] .text-emerald-200, [data-theme="light"] .text-emerald-300 { color: #065f46; }
+    [data-theme="light"] .text-emerald-400 { color: #047857; }
+    [data-theme="light"] .text-sky-300 { color: #0369a1; }
+    [data-theme="light"] .text-violet-300 { color: #6d28d9; }
+    [data-theme="light"] .text-blue-100, [data-theme="light"] .text-blue-200, [data-theme="light"] .text-blue-300 { color: #1d4ed8; }
+
+    /* Theme toggle: rounded-square button, moon/sun icon + hover tooltip. */
+    .theme-toggle { position: relative; }
+    .theme-toggle .theme-tip {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      white-space: nowrap; background: #0f172a; color: #ffffff;
+      font-size: 11px; font-weight: 500; padding: 4px 8px; border-radius: 6px;
+      opacity: 0; pointer-events: none; transition: opacity 0.15s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35); z-index: 50;
+    }
+    .theme-toggle:hover .theme-tip, .theme-toggle:focus-visible .theme-tip { opacity: 1; }
+    #themeToggle .icon-sun { display: none; }
+    html[data-theme="dark"] #themeToggle .icon-sun { display: block; }
+    html[data-theme="dark"] #themeToggle .icon-moon { display: none; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-red-600 selection:text-white">
+<body class="min-h-screen flex flex-col antialiased selection:bg-orange-600 selection:text-white">
 
-  <!-- TOP HEADER -->
+  <!-- TOP UTILITY BAR (no brand header: the logo lives centered above "Every Gundam story." on the landing view) -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0d0f14]/90 backdrop-blur-md px-4 lg:px-8 py-3">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-end gap-2">
 
-      <!-- Brand -->
-      <a href="#/" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-red-500/20">
-          GH
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <h1 class="text-base font-bold text-white tracking-tight">Gundam Media Hub</h1>
-            <span id="liveBadge" class="text-xs px-2 py-0.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 font-mono">Live Dashboard</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Sister site & Live Actions -->
-      <div class="flex flex-wrap items-center gap-2">
-        <a id="dcLink" href="https://dc-compact-live-dashboard.vercel.app" target="_blank" rel="noopener noreferrer" title="Sister site: DC Compact Comics dashboard" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">DC Compact Comics ↗</a>
-        <button id="liveSyncBtn" onclick="checkLiveUpdates()" title="Check for the latest catalog data" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/25 text-xs font-medium flex items-center gap-1.5 transition">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Live Sync
-        </button>
-        <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language" title="Language" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-        </select>
-      </div>
+      <a id="dcLink" href="https://dc-compact-live-dashboard.vercel.app" target="_blank" rel="noopener noreferrer" title="Sister site: DC Compact Comics dashboard" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">DC Compact Comics ↗</a>
+      <button id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Switch theme" class="theme-toggle w-9 h-9 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
+        <svg class="icon-moon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <span id="themeTip" class="theme-tip">Switch to light mode</span>
+      </button>
+      <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language" title="Language" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
 
     </div>
   </header>
@@ -415,6 +518,7 @@
   <!-- LANDING VIEW -->
   <section id="view-landing" class="flex-1 px-4 lg:px-8 py-8">
     <div class="text-center mb-8">
+      <img src="gmh-logo.png" alt="Gundam Media Hub" class="w-72 sm:w-80 mx-auto mb-5 rounded-2xl shadow-lg">
       <h2 id="landingHeading" class="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight whitespace-pre-line">Every Gundam story.
 One hub.</h2>
     </div>
@@ -467,7 +571,7 @@ One hub.</h2>
         <!-- Search Bar -->
         <div class="relative w-full md:w-80">
           <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-          <input id="searchInput" type="text" placeholder="Search titles, creators, publishers..." oninput="applyFilters()" class="w-full pl-9 pr-3 py-2 bg-slate-800/80 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-red-500 text-xs">
+          <input id="searchInput" type="text" placeholder="Search titles, creators, publishers..." oninput="applyFilters()" class="w-full pl-9 pr-3 py-2 bg-slate-800/80 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-orange-500 text-xs">
         </div>
 
         <!-- Filters: Group, Status & Sort -->
@@ -475,16 +579,16 @@ One hub.</h2>
 
           <!-- Status Filter -->
           <div class="flex items-center bg-slate-800/80 rounded-xl p-0.5 border border-white/10">
-            <button onclick="setStatusFilter('all')" id="statusAll" class="px-2.5 py-1 rounded-lg bg-red-600 text-white">All (<span id="countAll">0</span>)</button>
+            <button onclick="setStatusFilter('all')" id="statusAll" class="px-2.5 py-1 rounded-lg bg-orange-600 text-white">All (<span id="countAll">0</span>)</button>
             <button onclick="setStatusFilter('Released')" id="statusReleased" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Released (<span id="countReleased">0</span>)</button>
             <button onclick="setStatusFilter('Upcoming')" id="statusUpcoming" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Upcoming (<span id="countUpcoming">0</span>)</button>
           </div>
 
           <!-- Group Filter (options populated from the catalog) -->
-          <select id="groupSelect" onchange="applyFilters()" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-white/10 text-slate-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-red-500"></select>
+          <select id="groupSelect" onchange="applyFilters()" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-white/10 text-slate-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-orange-500"></select>
 
           <!-- Sort Select -->
-          <select id="sortSelect" onchange="applyFilters()" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-red-500/40 text-red-300 rounded-xl px-3 py-1.5 focus:outline-none font-medium"></select>
+          <select id="sortSelect" onchange="applyFilters()" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-orange-500/40 text-orange-300 rounded-xl px-3 py-1.5 focus:outline-none font-medium"></select>
 
         </div>
 
@@ -549,6 +653,30 @@ One hub.</h2>
       return 'en';
     }
     const initialLang = detectLang();
+
+    // Theme: dark is Banshee (near-black + orange accents); light is
+    // RX-78-2 (white + blue/red/yellow). Stored choice wins; default
+    // is dark. The toggle in the header calls toggleTheme().
+    const THEME_KEY = 'gundam_media_hub_theme';
+    function currentTheme() {
+      return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+    }
+    function updateThemeTip() {
+      const tip = document.getElementById('themeTip');
+      if (!tip) return;
+      tip.textContent = currentTheme() === 'dark'
+        ? tr('theme.switchToLight', 'Switch to light mode')
+        : tr('theme.switchToDark', 'Switch to dark mode');
+    }
+    function setTheme(theme) {
+      const next = theme === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      updateThemeTip();
+    }
+    function toggleTheme() {
+      setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+    }
 
     function tr(key, fallback) {
       const v = activeLocale.ui && activeLocale.ui[key];
@@ -693,12 +821,10 @@ One hub.</h2>
       document.title = tr('meta.title', 'Gundam Media Hub — Gundam manga, video games, discs & streaming in North America');
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) metaDesc.setAttribute('content', tr('meta.description', 'Gundam Media Hub — English-language Gundam manga, video games, Blu-ray / DVD / 4K discs, and streaming titles available in North America. Buy links verified daily.'));
-      setText('liveBadge', tr('header.liveBadge', 'Live Dashboard'));
       const dcLink = document.getElementById('dcLink');
       if (dcLink) dcLink.title = tr('header.sisterSiteTooltip', 'Sister site: DC Compact Comics dashboard');
-      const syncBtn = document.getElementById('liveSyncBtn');
-      if (syncBtn) syncBtn.title = tr('header.liveSyncTooltip', 'Check for the latest catalog data');
       renderSyncButton();
+      updateThemeTip();
       setText('landingHeading', tr('landing.heading', 'Every Gundam story.\nOne hub.'));
       const hubCard = document.getElementById('hubCard');
       if (hubCard) hubCard.setAttribute('aria-label', tr('landing.mediaTypesAria', 'Media types'));
@@ -773,7 +899,7 @@ One hub.</h2>
         defaultSort: 'release-desc',
         emptyMessage: 'No volumes matching your filter criteria.',
         stats: data => ([
-          { label: tr('stats.totalCatalogVolumes', 'Total Catalog Volumes'), value: data.length, valueClass: 'text-white', icon: '📚', iconClass: 'bg-red-500/20 text-red-400' },
+          { label: tr('stats.totalCatalogVolumes', 'Total Catalog Volumes'), value: data.length, valueClass: 'text-white', icon: '📚', iconClass: 'bg-orange-500/20 text-orange-400' },
           { label: tr('stats.series', 'Series'), value: new Set(data.map(c => c.seriesId)).size, valueClass: 'text-amber-400', icon: '🤖', iconClass: 'bg-amber-500/20 text-amber-400' },
           { label: tr('stats.ongoingSeries', 'Ongoing Series'), value: new Set(data.filter(c => c.status === 'Upcoming').map(c => c.seriesId)).size, valueClass: 'text-emerald-400', icon: '⏳', iconClass: 'bg-emerald-500/20 text-emerald-400' },
           { label: tr('stats.publishers', 'Publishers'), value: new Set(data.map(c => c.publisher)).size, valueClass: 'text-sky-400', icon: '🏷️', iconClass: 'bg-sky-500/20 text-sky-400' },
@@ -802,7 +928,7 @@ One hub.</h2>
         defaultSort: 'release-desc',
         emptyMessage: 'No games matching your filter criteria.',
         stats: data => ([
-          { label: tr('stats.totalGames', 'Total Games'), value: data.length, valueClass: 'text-white', icon: '🎮', iconClass: 'bg-red-500/20 text-red-400' },
+          { label: tr('stats.totalGames', 'Total Games'), value: data.length, valueClass: 'text-white', icon: '🎮', iconClass: 'bg-orange-500/20 text-orange-400' },
           { label: tr('label.platforms', 'Platforms'), value: new Set(data.flatMap(c => c.platforms || [])).size, valueClass: 'text-amber-400', icon: '🖥️', iconClass: 'bg-amber-500/20 text-amber-400' },
           { label: tr('status.released', 'Released'), value: data.filter(c => c.status === 'Released').length, valueClass: 'text-emerald-400', icon: '✅', iconClass: 'bg-emerald-500/20 text-emerald-400' },
           { label: tr('status.upcoming', 'Upcoming'), value: data.filter(c => c.status === 'Upcoming').length, valueClass: 'text-sky-400', icon: '🔜', iconClass: 'bg-sky-500/20 text-sky-400' },
@@ -846,7 +972,7 @@ One hub.</h2>
             { label: tr('stats.buy', 'Buy'), value: counts.buy, valueClass: 'text-amber-400', icon: '🛒', iconClass: 'bg-amber-500/20 text-amber-400' },
             { label: tr('stats.rent', 'Rent'), value: counts.rent, valueClass: 'text-rose-400', icon: '🎟️', iconClass: 'bg-rose-500/20 text-rose-400' },
             { label: tr('format.streaming', 'Streaming'), value: counts.stream, valueClass: 'text-violet-400', icon: '▶️', iconClass: 'bg-violet-500/20 text-violet-400' },
-            { label: tr('stats.discs', 'Discs'), value: counts.discs, valueClass: 'text-red-400', icon: '💿', iconClass: 'bg-red-500/20 text-red-400' },
+            { label: tr('stats.discs', 'Discs'), value: counts.discs, valueClass: 'text-orange-400', icon: '💿', iconClass: 'bg-orange-500/20 text-orange-400' },
           ];
         },
       },
@@ -1044,7 +1170,7 @@ One hub.</h2>
       ['all', 'Released', 'Upcoming'].forEach(s => {
         const btn = document.getElementById('status' + s.charAt(0).toUpperCase() + s.slice(1));
         if (s === status) {
-          btn.className = "px-2.5 py-1 rounded-lg bg-red-600 text-white font-medium";
+          btn.className = "px-2.5 py-1 rounded-lg bg-orange-600 text-white font-medium";
         } else {
           btn.className = "px-2.5 py-1 rounded-lg text-slate-400 hover:text-white";
         }
@@ -1445,7 +1571,7 @@ One hub.</h2>
 
           <div class="pt-3 border-t border-white/10 flex items-center justify-between">
             <span class="text-xs text-slate-400">${escapeHtml(footerLine)}</span>
-            <button onclick="closeModal()" class="px-4 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-medium">${escapeHtml(tr('modal.close', 'Close'))}</button>
+            <button onclick="closeModal()" class="px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-medium">${escapeHtml(tr('modal.close', 'Close'))}</button>
           </div>
         </div>
       `;
@@ -1489,6 +1615,11 @@ One hub.</h2>
     // choice, else browser language; English needs no fetch and a
     // failed locale fetch falls back to English), then load catalogs.
     setLanguage(initialLang);
+    try {
+      const storedTheme = localStorage.getItem(THEME_KEY);
+      if (storedTheme === 'light' || storedTheme === 'dark') setTheme(storedTheme);
+      else updateThemeTip();
+    } catch (e) { updateThemeTip(); }
     loadAllCatalogs();
   </script>
 </body>

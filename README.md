@@ -1,3 +1,5 @@
+![Gundam Media Hub logo](gmh-logo.png)
+
 # Gundam Media Hub
 
 Buyable Gundam media across North America — manga, video games, and Blu-ray / DVD / 4K discs you can actually buy online in the USA, Canada, and Mexico, with buy links verified daily.

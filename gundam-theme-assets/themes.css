@@ -1,0 +1,71 @@
+/* Import this file and gmh-components.css together, from the same directory. */
+/* GMH light-rx78-02: theme tokens and asset URLs */
+[data-gmh-theme="light"] {
+  --gmh-bg: #f5f7fc;
+  --gmh-surface: #ffffff;
+  --gmh-text: #102451;
+  --gmh-muted: #657b9c;
+  --gmh-accent: #1959ac;
+  --gmh-secondary: #cb2537;
+  --gmh-gold: #f3bd13;
+  --gmh-border: #a9b7cc;
+  --gmh-card-overlay: rgba(245,248,255,.68);
+  --gmh-art-opacity: .35;
+  --gmh-side-opacity: .45;
+  --gmh-hero-plate-opacity: 1;
+  --gmh-logo: url("light-rx78-02/logos/gmh-logo.webp");
+  --gmh-watermark: url("light-rx78-02/backgrounds/hero-watermark.webp");
+  --gmh-tile: url("light-rx78-02/textures/surface-tile.svg");
+  --gmh-header: url("light-rx78-02/armor-panels/header-corner.svg");
+  --gmh-footer: url("light-rx78-02/armor-panels/footer-corner.svg");
+  --gmh-side: url("light-rx78-02/armor-panels/side-armor.svg");
+  --gmh-plate: url("light-rx78-02/armor-panels/hero-plate.svg");
+  --gmh-unit: url("light-rx78-02/decals/unit-id.svg");
+  --gmh-efsf: url("light-rx78-02/decals/efsf.svg");
+  --gmh-divider: url("light-rx78-02/decals/heading-divider.svg");
+  --gmh-panellines: url("light-rx78-02/backgrounds/panel-lines.svg");
+  --gmh-vent: url("light-rx78-02/armor-panels/vent.svg");
+  --gmh-frame-read: url("light-rx78-02/card-frames/read.svg");
+  --gmh-icon-read: url("light-rx78-02/icons/read.svg");
+  --gmh-frame-play: url("light-rx78-02/card-frames/play.svg");
+  --gmh-icon-play: url("light-rx78-02/icons/play.svg");
+  --gmh-frame-watch: url("light-rx78-02/card-frames/watch.svg");
+  --gmh-icon-watch: url("light-rx78-02/icons/watch.svg");
+  color-scheme: light;
+}
+
+/* GMH dark-banshee: theme tokens and asset URLs */
+[data-gmh-theme="dark"] {
+  --gmh-bg: #0b0c10;
+  --gmh-surface: #191c24;
+  --gmh-text: #fff0de;
+  --gmh-muted: #b6a18d;
+  --gmh-accent: #ff941c;
+  --gmh-secondary: #ffb72d;
+  --gmh-gold: #ffb92d;
+  --gmh-border: #30323b;
+  --gmh-card-overlay: rgba(9,10,16,.56);
+  --gmh-art-opacity: .24;
+  --gmh-side-opacity: 1;
+  --gmh-hero-plate-opacity: 0;
+  --gmh-logo: url("dark-banshee/logos/gmh-logo.webp");
+  --gmh-watermark: url("dark-banshee/backgrounds/hero-watermark.webp");
+  --gmh-tile: url("dark-banshee/textures/surface-tile.svg");
+  --gmh-header: url("dark-banshee/armor-panels/header-corner.svg");
+  --gmh-footer: url("dark-banshee/armor-panels/footer-corner.svg");
+  --gmh-side: url("dark-banshee/armor-panels/side-armor.svg");
+  --gmh-plate: url("dark-banshee/armor-panels/hero-plate.svg");
+  --gmh-unit: url("dark-banshee/decals/unit-id.svg");
+  --gmh-efsf: url("dark-banshee/decals/efsf.svg");
+  --gmh-divider: url("dark-banshee/decals/heading-divider.svg");
+  --gmh-panellines: url("dark-banshee/backgrounds/panel-lines.svg");
+  --gmh-vent: url("dark-banshee/armor-panels/vent.svg");
+  --gmh-frame-read: url("dark-banshee/card-frames/read.svg");
+  --gmh-icon-read: url("dark-banshee/icons/read.svg");
+  --gmh-frame-play: url("dark-banshee/card-frames/play.svg");
+  --gmh-icon-play: url("dark-banshee/icons/play.svg");
+  --gmh-frame-watch: url("dark-banshee/card-frames/watch.svg");
+  --gmh-icon-watch: url("dark-banshee/icons/watch.svg");
+  color-scheme: dark;
+}
+

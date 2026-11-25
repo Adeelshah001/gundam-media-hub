@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" class="dark" data-theme="dark">
+<html lang="en" class="dark" data-theme="dark" data-gmh-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gundam Media Hub — Gundam manga, video games, discs &amp; streaming in North America</title>
   <meta name="description" content="Gundam Media Hub — English-language Gundam manga, video games, Blu-ray / DVD / 4K discs, and streaming titles available in North America. Buy links verified daily.">
+  <link rel="stylesheet" href="gundam-theme-assets/themes.css">
+  <link rel="stylesheet" href="gmh-site.css">
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
+    /* Package tokens (gundam-theme-assets/themes.css): dark is Banshee
+       #0b0c10 / #191c24 / #ff941c / #ffb92d; light is RX-78-2 #f5f7fc /
+       #102451 / #1959ac / #cb2537 / #f3bd13. */
     :root {
-      --bg-space: #0d0f14;
-      --card-bg: rgba(23, 27, 36, 0.85);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-border-hover: rgba(249, 115, 22, 0.5);
-      --accent-red: #f97316;
-      --accent-amber: #f59e0b;
+      --bg-space: #0b0c10;
+      --card-bg: rgba(25, 28, 36, 0.85);
+      --card-border: #30323b;
+      --card-border-hover: rgba(255, 148, 28, 0.5);
+      --accent-red: #ff941c;
+      --accent-amber: #ffb92d;
     }
     body {
       background-color: var(--bg-space);
@@ -62,48 +67,39 @@
     }
 
     /* ==================================================================
-       Landing card — adapted from Uiverse "rude-shrimp-21" by
-       joe-watson-sbf (MIT). Three expanding strips, one per media type.
-       Accents recoloured to the hub's red/amber theme; strip detail
-       (count + blurb) fades in on hover/focus alongside the label.
-       Strip icons: "Open book" by Lorc, "Gamepad" and "TV" by
-       Delapouite, from game-icons.net, CC BY 3.0.
+       Landing cards — adapted from Uiverse "rude-shrimp-21" by
+       joe-watson-sbf (MIT). Three SQUARE framed cards, one per media
+       type (mockup style). The swivel is unchanged: the row swings
+       from vertical (-90°) to horizontal on hover, the icon
+       counter-rotates to stay upright, and the count fades in — but
+       the square never changes size (no flex expansion).
+       Card icons: "Open book" by Lorc, "Gamepad" and "TV" by
+       Delapouite, from game-icons.net, CC BY 3.0. The package's own
+       read/play/watch icons are NOT used. Frames come from the theme
+       kit (gmh-site.css ::after overlay, numbered corners baked in).
        ================================================================== */
     .hub-card {
-      display: flex;
-      flex-direction: row;
-      gap: 5px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
       width: min(960px, 92vw);
-      height: clamp(320px, 55vh, 460px);
       margin: 0 auto;
-      background: #171717;
-      border-radius: 0.9em;
-      padding: 0.5em;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06);
     }
 
     .hub-strip {
       position: relative;
-      flex: 1;
-      height: 100%;
+      aspect-ratio: 1;
+      min-width: 0;
       overflow: hidden;
       cursor: pointer;
-      border-radius: 0.5em;
-      border: 1px solid var(--strip-accent, #ef4444);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 0.6em;
-      transition: flex 0.5s ease;
       background: radial-gradient(ellipse 120% 80% at 50% 0%, color-mix(in srgb, var(--strip-accent, #ef4444) 22%, transparent), transparent);
       text-align: center;
       padding: 0.5em;
-    }
-
-    .hub-strip:hover,
-    .hub-strip:focus-visible {
-      flex: 4;
     }
 
     /* One rotating row per strip: label + icon + count, in that fixed
@@ -134,7 +130,7 @@
       padding: 0.5em;
       text-align: center;
       text-transform: uppercase;
-      color: var(--strip-accent, #ef4444);
+      color: var(--gmh-text);
       letter-spacing: 0.1em;
       font-weight: 700;
       font-size: 1.05rem;
@@ -177,7 +173,7 @@
     .hub-strip-count {
       font-size: 1.6rem;
       font-weight: 800;
-      color: #fafafa;
+      color: var(--gmh-text);
     }
 
     /* Random cover background: decorative layer behind the label/detail,
@@ -189,6 +185,7 @@
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
+      clip-path: polygon(5% 0, 95% 0, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0 95%, 0 5%);
     }
 
     .hub-strip-bg img {
@@ -203,17 +200,14 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(15, 18, 26, 0.72);
+      background: var(--gmh-card-overlay);
     }
 
-    /* Narrow screens: stack the strips, labels stay horizontal. */
+    /* Narrow screens: one square card per row, labels stay horizontal. */
     @media (max-width: 640px) {
       .hub-card {
-        flex-direction: column;
-        height: auto;
-      }
-      .hub-strip {
-        min-height: 96px;
+        grid-template-columns: 1fr;
+        max-width: 360px;
       }
       .hub-strip-row {
         transform: rotate(0deg);
@@ -237,7 +231,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 3 / 4;
-      background-color: #1a1d27;
+      background-color: #191c24;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -253,7 +247,7 @@
     .item-card:hover,
     .item-card:focus-visible {
       transform: scale(1.05);
-      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.55), 0 16px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 0 1px rgba(255, 148, 28, 0.55), 0 16px 32px rgba(0, 0, 0, 0.5);
       z-index: 10;
     }
 
@@ -329,7 +323,7 @@
       height: 100%;
       padding: 0.5rem;
       box-sizing: border-box;
-      background-color: rgba(15, 18, 26, 0.92);
+      background-color: rgba(11, 12, 16, 0.92);
       transform: rotateX(-90deg);
       transform-origin: bottom;
       transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -371,7 +365,7 @@
       font-size: calc(var(--flip-scale, 1) * 0.7rem);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #f59e0b;
+      color: #ffb92d;
       font-weight: 600;
     }
 
@@ -383,10 +377,12 @@
        re-skin the same markup for light. Store brand colors are
        untouched — only the pale text tints are darkened for contrast.
        ================================================================== */
+    /* Primary actions go Banshee orange in dark (RX-78-2 blue in light). */
+    html[data-theme="dark"] .bg-orange-600 { background-color: #ff941c; }
     [data-theme="light"] body {
-      background-color: #f2f2ee;
+      background-color: #f5f7fc;
       background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
-      color: #1e293b;
+      color: #102451;
     }
     [data-theme="light"] header {
       background-color: rgba(255, 255, 255, 0.92);
@@ -394,9 +390,9 @@
     }
     [data-theme="light"] .space-glass {
       background: rgba(255, 255, 255, 0.92);
-      border-color: rgba(15, 23, 42, 0.1);
+      border-color: #a9b7cc;
     }
-    [data-theme="light"] .space-glass:hover { border-color: rgba(29, 78, 216, 0.5); }
+    [data-theme="light"] .space-glass:hover { border-color: rgba(25, 89, 172, 0.5); }
     [data-theme="light"] .badge-pub {
       background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(245, 158, 11, 0.12));
       border-color: rgba(234, 88, 12, 0.35);
@@ -412,13 +408,6 @@
       border-color: rgba(180, 83, 9, 0.3);
       color: #92400e;
     }
-    [data-theme="light"] .hub-card {
-      background: #ffffff;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(15, 23, 42, 0.08);
-    }
-    [data-theme="light"] .hub-strip-detail { color: #475569; }
-    [data-theme="light"] .hub-strip-count { color: #0f172a; }
-    [data-theme="light"] .hub-strip-bg::after { background: rgba(255, 255, 255, 0.6); }
     [data-theme="light"] .item-card {
       background-color: #ffffff;
       border-color: rgba(15, 23, 42, 0.1);
@@ -426,7 +415,7 @@
     }
     [data-theme="light"] .item-card:hover,
     [data-theme="light"] .item-card:focus-visible {
-      box-shadow: 0 0 0 1px rgba(29, 78, 216, 0.55), 0 16px 32px rgba(15, 23, 42, 0.2);
+      box-shadow: 0 0 0 1px rgba(25, 89, 172, 0.55), 0 16px 32px rgba(15, 23, 42, 0.2);
     }
     [data-theme="light"] .item-card__placeholder {
       background: linear-gradient(160deg, #f8fafc 0%, #e2e8f0 55%, #fef3c7 100%);
@@ -440,8 +429,8 @@
     [data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.2); }
     [data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.35); }
     /* Light text/surface utilities (dark text on light surfaces). */
-    [data-theme="light"] .text-white { color: #0f172a; }
-    [data-theme="light"] .hover\:text-white:hover { color: #0f172a; }
+    [data-theme="light"] .text-white { color: #102451; }
+    [data-theme="light"] .hover\:text-white:hover { color: #102451; }
     [data-theme="light"] .text-slate-200 { color: #334155; }
     [data-theme="light"] .text-slate-300 { color: #475569; }
     [data-theme="light"] .text-slate-400 { color: #64748b; }
@@ -455,11 +444,11 @@
     [data-theme="light"] .border-white\/20 { border-color: rgba(15, 23, 42, 0.2); }
     [data-theme="light"] .placeholder-slate-400::placeholder { color: #94a3b8; }
     /* Primary actions go RX-78-2 blue in light mode (orange in dark). */
-    [data-theme="light"] .bg-orange-600 { background-color: #1d4ed8; }
+    [data-theme="light"] .bg-orange-600 { background-color: #1959ac; }
     [data-theme="light"] .bg-orange-600.text-white { color: #ffffff; }
-    [data-theme="light"] .hover\:bg-orange-500:hover { background-color: #2563eb; }
-    [data-theme="light"] .focus\:border-orange-500:focus { border-color: #2563eb; }
-    [data-theme="light"] #sortSelect { border-color: rgba(29, 78, 216, 0.4); color: #1d4ed8; }
+    [data-theme="light"] .hover\:bg-orange-500:hover { background-color: #1959ac; }
+    [data-theme="light"] .focus\:border-orange-500:focus { border-color: #1959ac; }
+    [data-theme="light"] #sortSelect { border-color: rgba(25, 89, 172, 0.4); color: #1959ac; }
     /* Store/brand text colors: pale tints are unreadable on white. */
     [data-theme="light"] .text-red-100 { color: #991b1b; }
     [data-theme="light"] .text-red-200, [data-theme="light"] .text-red-300 { color: #b91c1c; }
@@ -477,7 +466,7 @@
     [data-theme="light"] .text-emerald-400 { color: #047857; }
     [data-theme="light"] .text-sky-300 { color: #0369a1; }
     [data-theme="light"] .text-violet-300 { color: #6d28d9; }
-    [data-theme="light"] .text-blue-100, [data-theme="light"] .text-blue-200, [data-theme="light"] .text-blue-300 { color: #1d4ed8; }
+    [data-theme="light"] .text-blue-100, [data-theme="light"] .text-blue-200, [data-theme="light"] .text-blue-300 { color: #1959ac; }
 
     /* Theme toggle: rounded-square button, moon/sun icon + hover tooltip. */
     .theme-toggle { position: relative; }
@@ -505,12 +494,12 @@
       <div class="flex items-center gap-2 ml-auto">
 
       <a id="dcLink" href="https://dc-compact-live-dashboard.vercel.app" target="_blank" rel="noopener noreferrer" title="Sister site: DC Compact Comics dashboard" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">DC Compact Comics ↗</a>
-      <button id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Switch theme" class="theme-toggle w-9 h-9 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
+      <button id="themeToggle" type="button" aria-label="Switch theme" class="theme-toggle w-9 h-9 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
         <svg class="icon-moon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="icon-sun w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         <span id="themeTip" class="theme-tip">Switch to light mode</span>
       </button>
-      <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language" title="Language" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">
+      <select id="langSelect" aria-label="Language" title="Language" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">
         <option value="en">English</option>
         <option value="es">Español</option>
         <option value="fr">Français</option>
@@ -522,14 +511,24 @@
 
   <!-- LANDING VIEW -->
   <section id="view-landing" class="flex-1 px-4 lg:px-8 py-8">
+    <div class="gmh-decor" aria-hidden="true">
+      <span class="gmh-decor-corner gmh-decor-corner--left"></span>
+      <span class="gmh-decor-corner gmh-decor-corner--right"></span>
+      <span class="gmh-decor-panellines"></span>
+      <span class="gmh-decor-side gmh-decor-side--left"></span>
+      <span class="gmh-decor-side gmh-decor-side--right"></span>
+    </div>
     <div class="text-center mb-8">
-      <img id="mainLogo" src="gmh-logo.png" alt="Gundam Media Hub" class="w-72 sm:w-80 mx-auto mb-5 rounded-2xl shadow-lg">
+      <div class="gmh-hero" id="heroBox" title="Switch logo">
+        <!-- Hero logos are stacked in here by the script (see LOGOS below); clicking the box cycles them. -->
+      </div>
       <h2 id="landingHeading" class="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight whitespace-pre-line">Every Gundam story.
 One hub.</h2>
+      <div class="gmh-divider" aria-hidden="true"></div>
     </div>
 
     <div id="hubCard" class="hub-card" role="group" aria-label="Media types">
-      <button type="button" id="strip-manga" class="hub-strip" style="--strip-accent: #ef4444" onclick="location.hash='#/manga'" aria-label="Browse manga">
+      <button type="button" id="strip-manga" class="hub-strip" style="--strip-accent: #ef4444" data-cat="manga" aria-label="Browse manga">
         <span class="hub-strip-row">
           <span class="hub-strip-label">Read</span>
           <span class="hub-strip-icon" aria-hidden="true"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M149.688 85.625c-1.234.005-2.465.033-3.72.063-33.913.806-75.48 10.704-127.25 33.718V362.78c60.77-28.82 106.718-37.067 144.22-33.092 33.502 3.55 59.685 16.66 83.562 31.187v-242.97c-23.217-17.744-50.195-30.04-85.97-32a184.47 184.47 0 0 0-10.843-.28zm211.968 0c-3.7-.016-7.322.088-10.844.28-35.773 1.96-62.75 14.256-85.968 32v242.97c23.876-14.527 50.06-27.637 83.562-31.188 37.502-3.974 83.45 4.272 144.22 33.094V119.407c-51.77-23.014-93.337-32.912-127.25-33.72-1.255-.028-2.486-.056-3.72-.06zm5.72 261.78c-1.038-.002-2.074.017-3.095.033-4.808.075-9.43.37-13.905.843-33.932 3.597-59.603 17.976-85.53 34.44v.28c-6.554-1.99-13.02-2.37-19.408-.97-25.566-16.177-51.003-30.202-84.468-33.75-5.595-.592-11.44-.883-17.564-.842-32.04.213-71.833 9.778-124.687 35.937v42.53c60.77-28.823 106.714-37.067 144.218-33.092 18.545 1.965 34.837 6.845 49.75 13.28-4.682 6.064-9.308 13.268-13.875 21.688h117.156c-5.93-8.22-11.798-15.414-17.626-21.56 14.996-6.503 31.39-11.43 50.062-13.408 37.503-3.974 83.448 4.27 144.22 33.094v-42.53c-53.16-26.31-93.115-35.863-125.25-35.97z"/></svg></span>
@@ -538,7 +537,7 @@ One hub.</h2>
           </span>
         </span>
       </button>
-      <button type="button" id="strip-games" class="hub-strip" style="--strip-accent: #f59e0b" onclick="location.hash='#/games'" aria-label="Browse video games">
+      <button type="button" id="strip-games" class="hub-strip" style="--strip-accent: #f59e0b" data-cat="games" aria-label="Browse video games">
         <span class="hub-strip-row">
           <span class="hub-strip-label">Play</span>
           <span class="hub-strip-icon" aria-hidden="true"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M155.084 125.945c-.46 0-.926.01-1.397.034-5.646.285-12.097 2.464-20.707 8.204-21.824 14.55-51.912 60.395-67.834 110.005-15.92 49.61-18.046 102.25 5.936 132.966 4.142 5.306 13.387 8.93 23.756 8.846 10.216-.084 20.682-3.838 26.482-9.44 1.022-1.47 9.296-13.336 21.39-27.404 12.863-14.96 28.716-31.686 45.835-38.777 41.863-17.34 93.024-17.34 134.887 0 17.118 7.092 32.97 23.818 45.834 38.778 12.095 14.068 20.37 25.933 21.39 27.404 5.8 5.602 16.267 9.356 26.483 9.44 10.368.085 19.612-3.54 23.755-8.846 23.973-30.704 21.885-83.575 5.978-133.287-15.907-49.713-46.054-95.526-67.783-109.624-11.498-7.46-19.198-8.73-26.285-7.64-7.088 1.093-14.347 5.197-22.866 11.07-17.038 11.746-38.898 30.02-73.952 30.02-35.212 0-57.115-18.514-74.13-30.356-8.505-5.92-15.73-10.025-22.743-11.078a27.615 27.615 0 0 0-4.03-.317zm212.904 48.75a16 16 0 0 1 16 16 16 16 0 0 1-16 16 16 16 0 0 1-16-16 16 16 0 0 1 16-16zM135 183h18v32h32v18h-32v32h-18v-32h-32v-18h32v-32zm200.988 23.695a16 16 0 0 1 16 16 16 16 0 0 1-16 16 16 16 0 0 1-16-16 16 16 0 0 1 16-16zm64 0a16 16 0 0 1 16 16 16 16 0 0 1-16 16 16 16 0 0 1-16-16 16 16 0 0 1 16-16zm-32 32a16 16 0 0 1 16 16 16 16 0 0 1-16 16 16 16 0 0 1-16-16 16 16 0 0 1 16-16zm-160 7h32v18h-32v-18zm64 0h27.897v18h-27.897v-18z"/></svg></span>
@@ -547,7 +546,7 @@ One hub.</h2>
           </span>
         </span>
       </button>
-      <button type="button" id="strip-discs" class="hub-strip" style="--strip-accent: #f97316" onclick="location.hash='#/discs'" aria-label="Browse discs">
+      <button type="button" id="strip-discs" class="hub-strip" style="--strip-accent: #f97316" data-cat="discs" aria-label="Browse discs">
         <span class="hub-strip-row">
           <span class="hub-strip-label">Watch</span>
           <span class="hub-strip-icon" aria-hidden="true"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="m132.992 48.756-9.984 14.976 77.287 51.524c4.32-4.192 9.542-8.012 15.703-11.162l-83.006-55.338zm246.016 0-83.006 55.338c6.16 3.15 11.383 6.97 15.703 11.162l77.287-51.524-9.984-14.976zM256 113.244c-22 0-35.334 7.06-43.637 15.363-4.703 4.704-7.58 9.97-9.316 14.637h105.906c-1.736-4.668-4.613-9.933-9.316-14.637-8.303-8.303-21.637-15.363-43.637-15.363zm-191.936 48c-5.044 0-11.106 2.784-15.697 7.37-4.59 4.584-7.367 10.63-7.367 15.63v279h430V184.2c.026-5.457-2.764-11.393-7.227-15.87-4.463-4.477-10.346-7.086-14.826-7.086H64.064zm30.295 23h257.745c10.374 0 20.79 6.818 26.776 16H112c-16 0-32 16-32 32v160c25.924-162.54 145.877-185.697 299.016-191.795 3.106 4.836 4.984 10.315 4.984 15.794v192c0 16-16 32-33.88 32H95.35c-15.35 0-31.35-16-31.35-32v-192c0-16 16-32 30.36-32zm328.663 7c13.7 0 25 11.3 25 25s-11.3 25-25 25-25-11.3-25-25 11.3-25 25-25zm-23.023 144h48v18h-48v-18zm0 32h48v18h-48v-18zm0 32h48v18h-48v-18z"/></svg></span>
@@ -576,7 +575,7 @@ One hub.</h2>
         <!-- Search Bar -->
         <div class="relative w-full md:w-80">
           <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-          <input id="searchInput" type="text" placeholder="Search titles, creators, publishers..." oninput="applyFilters()" class="w-full pl-9 pr-3 py-2 bg-slate-800/80 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-orange-500 text-xs">
+          <input id="searchInput" type="text" placeholder="Search titles, creators, publishers..." class="w-full pl-9 pr-3 py-2 bg-slate-800/80 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-orange-500 text-xs">
         </div>
 
         <!-- Filters: Group, Status & Sort -->
@@ -584,16 +583,16 @@ One hub.</h2>
 
           <!-- Status Filter -->
           <div class="flex items-center bg-slate-800/80 rounded-xl p-0.5 border border-white/10">
-            <button onclick="setStatusFilter('all')" id="statusAll" class="px-2.5 py-1 rounded-lg bg-orange-600 text-white">All (<span id="countAll">0</span>)</button>
-            <button onclick="setStatusFilter('Released')" id="statusReleased" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Released (<span id="countReleased">0</span>)</button>
-            <button onclick="setStatusFilter('Upcoming')" id="statusUpcoming" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Upcoming (<span id="countUpcoming">0</span>)</button>
+            <button data-status="all" id="statusAll" class="px-2.5 py-1 rounded-lg bg-orange-600 text-white">All (<span id="countAll">0</span>)</button>
+            <button data-status="Released" id="statusReleased" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Released (<span id="countReleased">0</span>)</button>
+            <button data-status="Upcoming" id="statusUpcoming" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Upcoming (<span id="countUpcoming">0</span>)</button>
           </div>
 
           <!-- Group Filter (options populated from the catalog) -->
-          <select id="groupSelect" onchange="applyFilters()" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-white/10 text-slate-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-orange-500"></select>
+          <select id="groupSelect" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-white/10 text-slate-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-orange-500"></select>
 
           <!-- Sort Select -->
-          <select id="sortSelect" onchange="applyFilters()" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-orange-500/40 text-orange-300 rounded-xl px-3 py-1.5 focus:outline-none font-medium"></select>
+          <select id="sortSelect" class="min-w-0 max-w-full w-full md:w-auto bg-slate-800/80 border border-orange-500/40 text-orange-300 rounded-xl px-3 py-1.5 focus:outline-none font-medium"></select>
 
         </div>
 
@@ -617,7 +616,7 @@ One hub.</h2>
   </div>
 
   <!-- FOOTER -->
-  <footer class="mt-auto border-t border-white/5 py-8 px-4 flex flex-col items-center justify-center gap-2.5 text-center">
+  <footer class="gmh-footer mt-auto border-t border-white/5 py-8 px-4 flex flex-col items-center justify-center gap-2.5 text-center">
     <p id="footerText" class="text-xs text-slate-400 font-medium tracking-wide">
       Gundam Media Hub
     </p>
@@ -627,9 +626,9 @@ One hub.</h2>
   </footer>
 
   <!-- DETAIL MODAL SLIDEOUT -->
-  <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex overflow-y-auto overscroll-contain p-4" onclick="if(event.target===this)closeModal()">
-    <div class="space-glass max-w-xl w-full m-auto rounded-3xl p-6 relative shadow-2xl border border-white/20" style="overflow:hidden">
-      <button id="modalCloseX" onclick="closeModal()" aria-label="Close" style="z-index:1" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+  <div id="detailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex overflow-y-auto overscroll-contain p-4">
+    <div class="gmh-modal space-glass max-w-xl w-full m-auto rounded-3xl px-6 pb-6 pt-10 relative shadow-2xl border border-white/20" style="overflow:hidden">
+      <button id="modalCloseX" aria-label="Close" style="z-index:1" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
       <div id="modalContent"></div>
     </div>
   </div>
@@ -681,11 +680,66 @@ One hub.</h2>
     function setTheme(theme) {
       const next = theme === 'light' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
+      document.documentElement.dataset.gmhTheme = next;
       try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
       updateThemeTip();
     }
     function toggleTheme() {
       setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+    }
+
+    // Hero logo — click to switch logo. Add more logo paths here later;
+    // the user will supply a logos folder with the full set.
+    const LOGOS = [
+      'gmh-logo.png',   // RX-78
+    ];
+    const LOGO_KEY = 'gundam_media_hub_logo';
+    let heroLogos = [];   // LOGOS paths that actually loaded, in array order
+    let heroLogoIndex = 0;
+
+    function showHeroLogo(i) {
+      if (!heroLogos.length) return;
+      heroLogoIndex = ((i % heroLogos.length) + heroLogos.length) % heroLogos.length;
+      document.querySelectorAll('#heroBox .hero-logo').forEach((img, j) => {
+        const on = j === heroLogoIndex;
+        img.classList.toggle('on', on);
+        img.setAttribute('aria-hidden', on ? 'false' : 'true');
+      });
+      try { localStorage.setItem(LOGO_KEY, heroLogos[heroLogoIndex]); } catch (e) {}
+    }
+
+    // Preload every LOGOS path; stack one <img> per logo that loads
+    // inside #heroBox (the fixed-size hero box) for the crossfade.
+    function initHeroLogos() {
+      const box = document.getElementById('heroBox');
+      if (!box) return;
+      const loaded = LOGOS.map(() => false);
+      let pending = LOGOS.length;
+      const finish = () => {
+        heroLogos = LOGOS.filter((_, i) => loaded[i]);
+        if (!heroLogos.length) heroLogos = ['gmh-logo.png'];
+        heroLogos.forEach((src, i) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = i === 0 ? 'Gundam Media Hub' : '';
+          img.className = 'hero-logo';
+          img.setAttribute('aria-hidden', 'true');
+          box.appendChild(img);
+        });
+        let start = 0;
+        try {
+          const at = heroLogos.indexOf(localStorage.getItem(LOGO_KEY));
+          if (at >= 0) start = at;
+        } catch (e) {}
+        showHeroLogo(start);
+      };
+      LOGOS.forEach((src, i) => {
+        const probe = new Image();
+        probe.onload = () => { loaded[i] = true; if (--pending === 0) finish(); };
+        probe.onerror = () => { if (--pending === 0) finish(); };
+        probe.src = src;
+      });
+      box.addEventListener('click', () => { if (heroLogos.length > 1) showHeroLogo(heroLogoIndex + 1); });
     }
 
     function tr(key, fallback) {
@@ -1086,7 +1140,7 @@ One hub.</h2>
           strip.prepend(bg);
         }
         bg.style.display = '';
-        bg.innerHTML = `<img src="${escapeHtml(pick.coverUrl)}" alt="" decoding="async" onerror="this.parentElement.style.display='none'" style="object-position:center ${COVER_POS[pick.seriesId] || '40%'}">`;
+        bg.innerHTML = `<img src="${escapeHtml(pick.coverUrl)}" alt="" decoding="async" class="img-fb" data-fb="parent" style="object-position:center ${COVER_POS[pick.seriesId] || '40%'}">`;
       }
     }
 
@@ -1316,7 +1370,7 @@ One hub.</h2>
       const glyph = c.type === 'stream' ? '▶️' : currentCatalog === 'games' ? '🎮' : currentCatalog === 'discs' ? '💿' : '📚';
       const fallback = placeholderFace(loc(c, 'title'), glyph);
       if (c.coverUrl) {
-        return fallback + `<img src="${escapeHtml(c.coverUrl)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">`;
+        return fallback + `<img src="${escapeHtml(c.coverUrl)}" alt="" loading="lazy" decoding="async" class="img-fb">`;
       }
       return fallback;
     }
@@ -1380,9 +1434,7 @@ One hub.</h2>
         // Hint must not promise links the entry doesn't have.
         const hasLinks = getBuyLinks(c).length > 0;
         return `
-        <div class="item-card" role="button" tabindex="0" aria-label="${escapeHtml(brief.title)}"
-            onclick="showDetail('${c.id}')"
-            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showDetail('${c.id}')}">
+        <div class="item-card" role="button" tabindex="0" data-id="${escapeHtml(c.id)}" aria-label="${escapeHtml(brief.title)}">
           <div class="item-card__face">${cardFace(c)}</div>
           ${badge}
           <div class="item-card__content">
@@ -1501,7 +1553,7 @@ One hub.</h2>
           </div>`
         : '';
       const watchLinkThrough = c.watchId
-        ? `<button onclick="showDetail('${escapeHtml(c.watchId)}')" class="w-full text-center py-2 px-3 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 border border-sky-500/40 text-sky-200 text-xs font-semibold transition">${escapeHtml(tr('modal.watchLinkThrough', 'Streaming options'))} →</button>`
+        ? `<button data-watch-id="${escapeHtml(c.watchId)}" class="w-full text-center py-2 px-3 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 border border-sky-500/40 text-sky-200 text-xs font-semibold transition">${escapeHtml(tr('modal.watchLinkThrough', 'Streaming options'))} →</button>`
         : '';
       const streamSection = streamLinks.length
         ? `<div class="p-3.5 rounded-2xl bg-slate-900/90 border border-white/10 space-y-2">
@@ -1542,7 +1594,7 @@ One hub.</h2>
           : tr('modal.footerLine', 'Buyable in North America · Buy links verified daily');
       const modal = document.getElementById('detailModal');
       const content = document.getElementById('modalContent');
-      const modalCoverBg = c.coverUrl ? `<div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden"><img src="${escapeHtml(c.coverUrl)}" alt="" decoding="async" onerror="this.parentElement.style.display='none'" style="width:100%;height:100%;object-fit:cover;object-position:center ${COVER_POS[c.seriesId] || '40%'};transform:scale(1.5);filter:blur(4px)"><div style="position:absolute;inset:0;background:rgba(15,18,26,0.72)"></div></div>` : '';
+      const modalCoverBg = c.coverUrl ? `<div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden"><img src="${escapeHtml(c.coverUrl)}" alt="" decoding="async" class="img-fb" data-fb="parent" style="width:100%;height:100%;object-fit:cover;object-position:center ${COVER_POS[c.seriesId] || '40%'};transform:scale(1.5);filter:blur(4px)"><div style="position:absolute;inset:0;background:rgba(15,18,26,0.72)"></div></div>` : '';
       const detailLine = detailRows(c).filter(([, v]) => v).map(([k, v]) => detailLineHtml(k, v)).join('');
       const subtitle = loc(c, 'subtitle');
       const statusText = c.releaseDate
@@ -1559,6 +1611,7 @@ One hub.</h2>
           </div>
 
           <h2 class="text-xl font-bold text-white">${escapeHtml(loc(c, 'title'))}</h2>
+          <div class="gmh-divider" aria-hidden="true"></div>
           ${subtitle ? `<p class="text-xs text-slate-300">${escapeHtml(subtitle)}</p>` : ''}
 
           <div class="p-3.5 rounded-2xl bg-slate-900 border border-white/10 space-y-2">
@@ -1581,7 +1634,7 @@ One hub.</h2>
 
           <div class="pt-3 border-t border-white/10 flex items-center justify-between">
             <span class="text-xs text-slate-400">${escapeHtml(footerLine)}</span>
-            <button onclick="closeModal()" class="px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-medium">${escapeHtml(tr('modal.close', 'Close'))}</button>
+            <button class="modal-close-btn px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-medium">${escapeHtml(tr('modal.close', 'Close'))}</button>
           </div>
         </div>
       `;
@@ -1621,6 +1674,50 @@ One hub.</h2>
 
     window.addEventListener('hashchange', showView);
 
+    // Control wiring: every control is bound here with addEventListener
+    // (no inline handlers anywhere — they were blocked in the preview
+    // shell, and this keeps markup and behavior separate).
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    document.getElementById('langSelect').addEventListener('change', e => setLanguage(e.target.value));
+    document.querySelectorAll('.hub-strip').forEach(strip => {
+      strip.addEventListener('click', () => { location.hash = '#/' + strip.dataset.cat; });
+    });
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.querySelectorAll('[data-status]').forEach(btn => {
+      btn.addEventListener('click', () => setStatusFilter(btn.dataset.status));
+    });
+    document.getElementById('groupSelect').addEventListener('change', applyFilters);
+    document.getElementById('sortSelect').addEventListener('change', applyFilters);
+    const detailModalEl = document.getElementById('detailModal');
+    detailModalEl.addEventListener('click', e => { if (e.target === detailModalEl) closeModal(); });
+    document.getElementById('modalCloseX').addEventListener('click', closeModal);
+    // Catalog cards are generated markup: one delegated listener on the
+    // grid opens the modal; Enter/Space on a focused card does the same.
+    const gridSpaceEl = document.getElementById('gridSpace');
+    gridSpaceEl.addEventListener('click', e => {
+      const card = e.target.closest('.item-card');
+      if (card && card.dataset.id) showDetail(card.dataset.id);
+    });
+    gridSpaceEl.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const card = e.target.closest('.item-card');
+      if (card && card.dataset.id) { e.preventDefault(); showDetail(card.dataset.id); }
+    });
+    // Modal content is generated markup too: delegate its buttons.
+    document.getElementById('modalContent').addEventListener('click', e => {
+      const through = e.target.closest('[data-watch-id]');
+      if (through) { showDetail(through.dataset.watchId); return; }
+      if (e.target.closest('.modal-close-btn')) closeModal();
+    });
+    // Image fallbacks (formerly inline onerror): one capture-phase
+    // listener — data-fb="parent" hides the wrapper, otherwise the img.
+    document.addEventListener('error', e => {
+      const img = e.target;
+      if (!(img instanceof HTMLImageElement) || !img.classList.contains('img-fb')) return;
+      if (img.dataset.fb === 'parent') img.parentElement.style.display = 'none';
+      else img.style.display = 'none';
+    }, true);
+
     // Initialize on page load: resolve the language first (stored
     // choice, else browser language; English needs no fetch and a
     // failed locale fetch falls back to English), then load catalogs.
@@ -1630,10 +1727,13 @@ One hub.</h2>
       if (storedTheme === 'light' || storedTheme === 'dark') setTheme(storedTheme);
       else updateThemeTip();
     } catch (e) { updateThemeTip(); }
-    // Landing logo tilt: hover tilts the logo and scales it up (vanilla-tilt).
-    const mainLogo = document.getElementById('mainLogo');
-    if (window.VanillaTilt && mainLogo) {
-      VanillaTilt.init(mainLogo, { max: 25, speed: 400, scale: 1.1 });
+    // Hero logos: preload LOGOS, stack what loads in #heroBox, and
+    // restore the remembered pick; clicking the box cycles.
+    initHeroLogos();
+    // Landing logo tilt: hover tilts the hero box and scales it up (vanilla-tilt).
+    const heroBox = document.getElementById('heroBox');
+    if (window.VanillaTilt && heroBox) {
+      VanillaTilt.init(heroBox, { max: 25, speed: 400, scale: 1.1 });
     }
     loadAllCatalogs();
   </script>

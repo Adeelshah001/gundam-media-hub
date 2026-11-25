@@ -1,0 +1,60 @@
+/* GMH redesign: adaptation of gundam-theme-assets/gmh-components.css.
+   Only the pieces the redesign uses. NOT used, per the decided plan:
+   the package's hover-lift cards, the watermark, the full suit
+   illustration, the package read/play/watch icons, and the per-theme
+   theme.css files. Tokens come from gundam-theme-assets/themes.css
+   via [data-gmh-theme], synced with the existing theme toggle. */
+
+/* ---- Landing stage: package dot-grid tile + decor layers ---- */
+#view-landing {
+  position: relative;
+  isolation: isolate;
+  background: var(--gmh-tile) repeat;
+}
+.gmh-decor { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.gmh-decor > span { position: absolute; background-position: center; background-repeat: no-repeat; background-size: contain; }
+.gmh-decor-corner { top: 0; width: clamp(130px, 22vw, 360px); aspect-ratio: 360 / 130; background-image: var(--gmh-header); }
+.gmh-decor-corner--left { left: 0; }
+.gmh-decor-corner--right { right: 0; transform: scaleX(-1); }
+.gmh-decor-panellines { top: 12%; left: 0; right: 0; height: 180px; background-image: var(--gmh-panellines); background-size: 100% auto; opacity: .7; }
+.gmh-decor-side { top: 100px; width: clamp(60px, 10vw, 170px); aspect-ratio: 170 / 480; background-image: var(--gmh-side); opacity: var(--gmh-side-opacity); }
+.gmh-decor-side--left { left: 0; }
+.gmh-decor-side--right { right: 0; transform: scaleX(-1); }
+@media (max-width: 560px) { .gmh-decor-side { opacity: .25; } }
+
+/* ---- Hero: armor plate behind the logo (light theme only: the
+   package's --gmh-hero-plate-opacity is 1 in light, 0 in dark) ---- */
+.gmh-hero { position: relative; width: min(100%, 480px); aspect-ratio: 1.65; margin: 0 auto 20px; display: grid; place-items: center; }
+.gmh-hero::before { content: ""; position: absolute; inset: 0; background: var(--gmh-plate) center / 100% 100% no-repeat; opacity: var(--gmh-hero-plate-opacity); filter: drop-shadow(0 9px 8px #10245128); }
+/* ---- Hero: #heroBox is a fixed-size box (never resizes between
+   logos); the available logos stack absolutely inside it and
+   crossfade via opacity. Clicking the box cycles (see LOGOS). ---- */
+#heroBox { cursor: pointer; }
+.hero-logo { position: absolute; inset: 0; margin: auto; max-width: 92%; max-height: 94%; z-index: 1; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1); opacity: 0; transition: opacity .45s ease; pointer-events: none; }
+.hero-logo.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero-logo { transition: none; } }
+.gmh-divider { width: min(260px, 65%); height: 20px; background: var(--gmh-divider) center / contain no-repeat; margin: 10px auto 24px; }
+
+/* ---- Landing square cards: package frames as overlays.
+   The swivel itself lives in the existing .hub-strip-* rules. ---- */
+.hub-strip::after { content: ""; position: absolute; inset: 0; z-index: 2; background: var(--gmh-frame) center / 100% 100% no-repeat; pointer-events: none; }
+#strip-manga { --gmh-frame: var(--gmh-frame-read); }
+#strip-games { --gmh-frame: var(--gmh-frame-play); }
+#strip-discs { --gmh-frame: var(--gmh-frame-watch); }
+.hub-strip:focus-visible { outline: 3px solid var(--gmh-gold); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .hub-strip-row, .hub-strip-icon, .hub-strip-detail { transition: none; }
+}
+
+/* ---- Detail modal: armor treatment (header-corner pieces top) ---- */
+.gmh-modal { border-color: var(--gmh-border); }
+.gmh-modal::before, .gmh-modal::after { content: ""; position: absolute; top: 0; width: 90px; height: 33px; background: var(--gmh-header) center / contain no-repeat; pointer-events: none; z-index: 0; }
+.gmh-modal::before { left: 0; }
+.gmh-modal::after { right: 0; transform: scaleX(-1); }
+
+/* ---- Footer: corner armor panels around the stacked credit ---- */
+.gmh-footer { position: relative; isolation: isolate; }
+.gmh-footer::before, .gmh-footer::after { content: ""; position: absolute; bottom: 0; width: clamp(140px, 22vw, 360px); aspect-ratio: 360 / 80; background: var(--gmh-footer) center / contain no-repeat; pointer-events: none; z-index: 0; }
+.gmh-footer::before { left: 0; }
+.gmh-footer::after { right: 0; transform: scaleX(-1); }
+.gmh-footer p { position: relative; z-index: 1; }

@@ -500,7 +500,7 @@
   <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0d0f14]/90 backdrop-blur-md px-4 lg:px-8 py-3">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
       <a id="homeLogoLink" href="#/" title="Home" class="shrink-0">
-        <img src="Gundam%20Media%20Hub%20Metallic%20Emblem.png" alt="Gundam Media Hub — home" class="h-9 w-auto">
+        <img src="Gundam%20Media%20Hub%20Metallic%20Emblem.png" alt="Gundam Media Hub — home" class="h-14 w-auto">
       </a>
       <div class="flex items-center gap-2 ml-auto">
 
@@ -523,7 +523,7 @@
   <!-- LANDING VIEW -->
   <section id="view-landing" class="flex-1 px-4 lg:px-8 py-8">
     <div class="text-center mb-8">
-      <img src="gmh-logo.png" alt="Gundam Media Hub" class="w-72 sm:w-80 mx-auto mb-5 rounded-2xl shadow-lg">
+      <img id="mainLogo" src="gmh-logo.png" alt="Gundam Media Hub" class="w-72 sm:w-80 mx-auto mb-5 rounded-2xl shadow-lg">
       <h2 id="landingHeading" class="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight whitespace-pre-line">Every Gundam story.
 One hub.</h2>
     </div>
@@ -632,6 +632,8 @@ One hub.</h2>
   </div>
 
   <!-- SCRIPT LOGIC -->
+  <!-- vanilla-tilt (MIT, vendored locally as vanilla-tilt.min.js v1.8.1) -->
+  <script src="vanilla-tilt.min.js"></script>
   <script>
     // ==================================================================
     // Localization (EN/ES/FR). English renders from the hardcoded
@@ -1625,6 +1627,11 @@ One hub.</h2>
       if (storedTheme === 'light' || storedTheme === 'dark') setTheme(storedTheme);
       else updateThemeTip();
     } catch (e) { updateThemeTip(); }
+    // Landing logo tilt: hover tilts the logo and scales it up (vanilla-tilt).
+    const mainLogo = document.getElementById('mainLogo');
+    if (window.VanillaTilt && mainLogo) {
+      VanillaTilt.init(mainLogo, { max: 25, speed: 400, scale: 1.1 });
+    }
     loadAllCatalogs();
   </script>
 </body>

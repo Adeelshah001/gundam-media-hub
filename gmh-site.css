@@ -23,10 +23,9 @@
 .gmh-decor-side--right { right: 0; transform: scaleX(-1); }
 @media (max-width: 560px) { .gmh-decor-side { opacity: .25; } }
 
-/* ---- Hero: armor plate behind the logo (light theme only: the
-   package's --gmh-hero-plate-opacity is 1 in light, 0 in dark) ---- */
+/* ---- Hero stage (the kit's armor plate behind the logo was
+   removed 2026-11-25 at the user's call: no backing plate) ---- */
 .gmh-hero { position: relative; width: min(100%, 480px); aspect-ratio: 1.65; margin: 0 auto 20px; display: grid; place-items: center; }
-.gmh-hero::before { content: ""; position: absolute; inset: 0; background: var(--gmh-plate) center / 100% 100% no-repeat; opacity: var(--gmh-hero-plate-opacity); filter: drop-shadow(0 9px 8px #10245128); }
 /* ---- Hero: #heroBox is a fixed-size box (never resizes between
    logos); the available logos stack absolutely inside it and
    crossfade via opacity. Clicking the box cycles (see LOGOS). ---- */

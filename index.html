@@ -493,7 +493,6 @@
       </a>
       <div class="flex items-center gap-2 ml-auto">
 
-      <a id="dcLink" href="https://dc-compact-live-dashboard.vercel.app" target="_blank" rel="noopener noreferrer" title="Sister site: DC Compact Comics dashboard" class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition">DC Compact Comics ↗</a>
       <button id="themeToggle" type="button" aria-label="Switch theme" class="theme-toggle w-9 h-9 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
         <svg class="icon-moon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="icon-sun w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -885,8 +884,6 @@ One hub.</h2>
       document.title = tr('meta.title', 'Gundam Media Hub — Gundam manga, video games, discs & streaming in North America');
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) metaDesc.setAttribute('content', tr('meta.description', 'Gundam Media Hub — English-language Gundam manga, video games, Blu-ray / DVD / 4K discs, and streaming titles available in North America. Buy links verified daily.'));
-      const dcLink = document.getElementById('dcLink');
-      if (dcLink) dcLink.title = tr('header.sisterSiteTooltip', 'Sister site: DC Compact Comics dashboard');
       renderSyncButton();
       updateThemeTip();
       setText('landingHeading', tr('landing.heading', 'Every Gundam story.\nOne hub.'));

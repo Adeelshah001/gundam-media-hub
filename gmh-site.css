@@ -30,7 +30,7 @@
    logos); the available logos stack absolutely inside it and
    crossfade via opacity. Clicking the box cycles (see LOGOS). ---- */
 #heroBox { cursor: pointer; }
-.hero-logo { position: absolute; inset: 0; margin: auto; max-width: 92%; max-height: 94%; z-index: 1; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1); opacity: 0; transition: opacity .45s ease; pointer-events: none; }
+.hero-logo { position: absolute; inset: 0; margin: auto; max-width: 92%; max-height: 94%; z-index: 1; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
 .hero-logo.on { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .hero-logo { transition: none; } }
 .gmh-divider { width: min(260px, 65%); height: 20px; background: var(--gmh-divider) center / contain no-repeat; margin: 10px auto 24px; }

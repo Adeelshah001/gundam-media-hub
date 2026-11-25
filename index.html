@@ -687,19 +687,30 @@ One hub.</h2>
       setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
     }
 
-    // Hero logo — click to switch logo. Add more logo paths here later;
-    // the user will supply a logos folder with the full set.
+    // Hero logos — click the hero to cycle. Files live in the repo's
+    // logos/ folder; add new paths here in display order.
     const LOGOS = [
-      'gmh-logo.png',   // RX-78
+      'logos/00_OG_Gundam.png',
+      'logos/01_RX-78-2_Gundam.png.png',
+      'logos/02_MSZ-006_Zeta_Gundam.png',
+      'logos/03_MSZ-010_ZZ_Gundam.png',
+      'logos/04_RX-93_Nu_Gundam.png',
+      'logos/05_RX-78NT-1_Gundam_Alex.png',
+      'logos/06_F91_Gundam.png',
+      'logos/07_RX-78GP01_Gundam_Zephyranthes.png',
+      'logos/08_LM314V21_V2_Gundam.png',
+      'logos/09_GF13-017NJII_God_Gundam.png',
+      'logos/10_XXXG-01W_Wing_Gundam.png',
     ];
     const LOGO_KEY = 'gundam_media_hub_logo';
-    let heroLogos = [];   // LOGOS paths that actually loaded, in array order
+    let heroLogos = [];   // LOGOS paths in the rotation, in array order
+    let heroImgs = [];    // their <img> elements, parallel to heroLogos
     let heroLogoIndex = 0;
 
     function showHeroLogo(i) {
       if (!heroLogos.length) return;
       heroLogoIndex = ((i % heroLogos.length) + heroLogos.length) % heroLogos.length;
-      document.querySelectorAll('#heroBox .hero-logo').forEach((img, j) => {
+      heroImgs.forEach((img, j) => {
         const on = j === heroLogoIndex;
         img.classList.toggle('on', on);
         img.setAttribute('aria-hidden', on ? 'false' : 'true');
@@ -707,37 +718,37 @@ One hub.</h2>
       try { localStorage.setItem(LOGO_KEY, heroLogos[heroLogoIndex]); } catch (e) {}
     }
 
-    // Preload every LOGOS path; stack one <img> per logo that loads
-    // inside #heroBox (the fixed-size hero box) for the crossfade.
+    // Stack one <img> per LOGOS path inside #heroBox (the fixed-size
+    // hero box); they load in parallel and switching crossfades them
+    // (AlphaDissolve: the outgoing logo's opacity falls while the
+    // incoming one's rises). A path that fails to load drops out of
+    // the rotation.
     function initHeroLogos() {
       const box = document.getElementById('heroBox');
       if (!box) return;
-      const loaded = LOGOS.map(() => false);
-      let pending = LOGOS.length;
-      const finish = () => {
-        heroLogos = LOGOS.filter((_, i) => loaded[i]);
-        if (!heroLogos.length) heroLogos = ['gmh-logo.png'];
-        heroLogos.forEach((src, i) => {
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = i === 0 ? 'Gundam Media Hub' : '';
-          img.className = 'hero-logo';
-          img.setAttribute('aria-hidden', 'true');
-          box.appendChild(img);
-        });
-        let start = 0;
-        try {
-          const at = heroLogos.indexOf(localStorage.getItem(LOGO_KEY));
-          if (at >= 0) start = at;
-        } catch (e) {}
-        showHeroLogo(start);
-      };
+      let start = 0;
+      try {
+        const at = LOGOS.indexOf(localStorage.getItem(LOGO_KEY));
+        if (at >= 0) start = at;
+      } catch (e) {}
       LOGOS.forEach((src, i) => {
-        const probe = new Image();
-        probe.onload = () => { loaded[i] = true; if (--pending === 0) finish(); };
-        probe.onerror = () => { if (--pending === 0) finish(); };
-        probe.src = src;
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = i === 0 ? 'Gundam Media Hub' : '';
+        img.className = 'hero-logo';
+        img.setAttribute('aria-hidden', 'true');
+        img.addEventListener('error', () => {
+          const at = heroLogos.indexOf(src);
+          if (at >= 0) { heroLogos.splice(at, 1); heroImgs.splice(at, 1); }
+          img.remove();
+          if (heroLogos.length) showHeroLogo(Math.min(heroLogoIndex, heroLogos.length - 1));
+        });
+        heroLogos.push(src);
+        heroImgs.push(img);
+        box.appendChild(img);
       });
+      if (!heroLogos.length) return;
+      showHeroLogo(Math.min(start, heroLogos.length - 1));
       box.addEventListener('click', () => { if (heroLogos.length > 1) showHeroLogo(heroLogoIndex + 1); });
     }
 

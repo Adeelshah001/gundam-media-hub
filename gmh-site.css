@@ -27,10 +27,12 @@
    removed 2026-11-25 at the user's call: no backing plate) ---- */
 .gmh-hero { position: relative; width: min(100%, 480px); aspect-ratio: 1.65; margin: 0 auto 20px; display: grid; place-items: center; }
 /* ---- Hero: #heroBox is a fixed-size box (never resizes between
-   logos); the available logos stack absolutely inside it and
-   crossfade via opacity. Clicking the box cycles (see LOGOS). ---- */
+   logos); every logo fills the same frame (object-fit: contain, so
+   placement and spacing are identical whatever a logo's aspect)
+   and switching is an AlphaDissolve crossfade via opacity.
+   Clicking the box cycles (see LOGOS). ---- */
 #heroBox { cursor: pointer; }
-.hero-logo { position: absolute; inset: 0; margin: auto; max-width: 92%; max-height: 94%; z-index: 1; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
+.hero-logo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
 .hero-logo.on { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .hero-logo { transition: none; } }
 .gmh-divider { width: min(260px, 65%); height: 20px; background: var(--gmh-divider) center / contain no-repeat; margin: 10px auto 24px; }

@@ -429,6 +429,31 @@
        the modal's dark-flipped title, notes and footer stay readable. */
     .modal-cover-scrim { background: rgba(15,18,26,0.72); }
     [data-theme="light"] .modal-cover-scrim { background: rgba(245,248,255,0.88); }
+    /* Adaptive modal scheme: JS samples the open item's cover brightness
+       and tags #modalContent on-dark-cover / on-light-cover, so the modal
+       header text, notes and footer follow the cover, not just the theme.
+       No tag (no cover, or the image host blocks pixel reads) = theme
+       scheme above. */
+    #modalContent.on-dark-cover .modal-cover-scrim { background: rgba(15,18,26,0.72); }
+    #modalContent.on-light-cover .modal-cover-scrim { background: rgba(245,248,255,0.88); }
+    #modalContent.on-dark-cover > div > h2 { color: #ffffff; }
+    #modalContent.on-dark-cover > div > p { color: #cbd5e1; }
+    #modalContent.on-dark-cover .badge-pub { background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2)); border-color: rgba(251, 146, 60, 0.35); color: #fdba74; }
+    #modalContent.on-dark-cover .badge-compact { background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3); color: #6ee7b7; }
+    #modalContent.on-dark-cover .badge-upcoming { background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3); color: #fcd34d; }
+    #modalContent.on-dark-cover .bg-amber-500\/10 .text-amber-300 { color: #fcd34d; }
+    #modalContent.on-dark-cover .bg-amber-500\/10 .text-amber-100\/80 { color: rgba(254, 243, 199, 0.8); }
+    #modalContent.on-dark-cover > div > .border-t { border-color: rgba(255, 255, 255, 0.1); }
+    #modalContent.on-dark-cover > div > .border-t > span { color: #94a3b8; }
+    #modalContent.on-light-cover > div > h2 { color: #102451; }
+    #modalContent.on-light-cover > div > p { color: #475569; }
+    #modalContent.on-light-cover .badge-pub { background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(245, 158, 11, 0.12)); border-color: rgba(234, 88, 12, 0.35); color: #c2410c; }
+    #modalContent.on-light-cover .badge-compact { background: rgba(4, 120, 87, 0.1); border-color: rgba(4, 120, 87, 0.3); color: #047857; }
+    #modalContent.on-light-cover .badge-upcoming { background: rgba(180, 83, 9, 0.1); border-color: rgba(180, 83, 9, 0.3); color: #92400e; }
+    #modalContent.on-light-cover .bg-amber-500\/10 .text-amber-300 { color: #92400e; }
+    #modalContent.on-light-cover .bg-amber-500\/10 .text-amber-100\/80 { color: rgba(120, 53, 15, 0.85); }
+    #modalContent.on-light-cover > div > .border-t { border-color: rgba(15, 23, 42, 0.12); }
+    #modalContent.on-light-cover > div > .border-t > span { color: #64748b; }
     [data-theme="light"] ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.06); }
     [data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.2); }
     [data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.35); }
@@ -1543,6 +1568,33 @@ One hub.</h2>
       ];
     }
 
+    // Sample the cover's average brightness and tag the modal content so
+    // its header follows the cover: pale text on dark covers, dark text
+    // on light ones. If the image host blocks pixel reads (CORS), no tag
+    // is set and the theme's own scheme applies.
+    function applyCoverScheme(url, forId) {
+      const content = document.getElementById('modalContent');
+      content.classList.remove('on-dark-cover', 'on-light-cover');
+      if (!url) return;
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        if (openModalId !== forId) return;
+        try {
+          const cv = document.createElement('canvas');
+          cv.width = 16; cv.height = 16;
+          const cx = cv.getContext('2d');
+          cx.drawImage(img, 0, 0, 16, 16);
+          const px = cx.getImageData(0, 0, 16, 16).data;
+          let sum = 0;
+          for (let i = 0; i < px.length; i += 4) sum += 0.2126 * px[i] + 0.7152 * px[i + 1] + 0.0722 * px[i + 2];
+          const avg = sum / (px.length / 4) / 255;
+          content.classList.add(avg >= 0.55 ? 'on-light-cover' : 'on-dark-cover');
+        } catch (e) { /* canvas tainted: keep the theme scheme */ }
+      };
+      img.src = url;
+    }
+
     function showDetail(id) {
       const c = DATA[currentCatalog].find(item => item.id === id);
       if (!c) return;
@@ -1651,6 +1703,7 @@ One hub.</h2>
         </div>
       `;
       modal.classList.remove('hidden');
+      applyCoverScheme(c.coverUrl, id);
     }
 
     function closeModal() {

@@ -425,6 +425,10 @@
     [data-theme="light"] .item-card__title { color: #0f172a; }
     [data-theme="light"] .item-card__description { color: #334155; }
     [data-theme="light"] .item-card__hint { color: #b45309; }
+    /* Modal cover scrim: dark in dark mode; in light mode it goes pale so
+       the modal's dark-flipped title, notes and footer stay readable. */
+    .modal-cover-scrim { background: rgba(15,18,26,0.72); }
+    [data-theme="light"] .modal-cover-scrim { background: rgba(245,248,255,0.88); }
     [data-theme="light"] ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.06); }
     [data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.2); }
     [data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.35); }
@@ -1602,7 +1606,7 @@ One hub.</h2>
           : tr('modal.footerLine', 'Buyable in North America · Buy links verified daily');
       const modal = document.getElementById('detailModal');
       const content = document.getElementById('modalContent');
-      const modalCoverBg = c.coverUrl ? `<div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden"><img src="${escapeHtml(c.coverUrl)}" alt="" decoding="async" class="img-fb" data-fb="parent" style="width:100%;height:100%;object-fit:cover;object-position:center ${COVER_POS[c.seriesId] || '40%'};transform:scale(1.5);filter:blur(4px)"><div style="position:absolute;inset:0;background:rgba(15,18,26,0.72)"></div></div>` : '';
+      const modalCoverBg = c.coverUrl ? `<div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden"><img src="${escapeHtml(c.coverUrl)}" alt="" decoding="async" class="img-fb" data-fb="parent" style="width:100%;height:100%;object-fit:cover;object-position:center ${COVER_POS[c.seriesId] || '40%'};transform:scale(1.5);filter:blur(4px)"><div class="modal-cover-scrim" style="position:absolute;inset:0"></div></div>` : '';
       const detailLine = detailRows(c).filter(([, v]) => v).map(([k, v]) => detailLineHtml(k, v)).join('');
       const subtitle = loc(c, 'subtitle');
       const statusText = c.releaseDate
